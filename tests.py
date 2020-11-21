@@ -2,7 +2,7 @@ import unittest
 
 import roman_converter
 
-class TestInputChecker(unittest.TestCase):
+class TestConverter(unittest.TestCase):
     def make_test_set(self):
         self.tests = {
             "I": 1,
@@ -44,6 +44,7 @@ class TestInputChecker(unittest.TestCase):
         self.make_test_set()
         conv = roman_converter.Converter()
         for input, result in self.tests.items():
-            print("Input: " + input + " | Expected: " + result + " | Converted: " + str(conv.convert(input)))
-            assert(result, conv.convert(input))
+            converted = conv.convert(input)
+            print("Input: " + input + " | Expected: " + str(result) + " | Converted: " + str(converted))
+            assert result == converted
         
