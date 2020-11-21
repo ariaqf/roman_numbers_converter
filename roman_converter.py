@@ -10,11 +10,12 @@ class Converter:
         for i in range(limit):
             key = roman_number[i]
             next_key = None
-            result += self.components[key].value
-            if i < limit:
+            if i < limit-1:
                 next_key = roman_number[i+1]
-            if self.components[key].value < self.components[next_key].value:
-                result -= self.components[next_key].value
-                i += 1
+            if next_key != None and self.components[key]['value'] < self.components[next_key]['value']:
+                result -= self.components[key]['value']
+            else:
+                result += self.components[key]['value']
+            print(key,next_key)
             
         return result
